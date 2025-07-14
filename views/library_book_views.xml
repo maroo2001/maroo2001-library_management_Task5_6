@@ -1,0 +1,47 @@
+<odoo>
+    <!-- FORM VIEW -->
+    <record id="view_form_book" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="📖 Book Form">
+                <sheet>
+                    <group>
+                        <field name="name" string="📚 Book Title"/>
+                        <field name="author_id" string="👤 Author"/>
+                        <field name="description" string="📝 Description"/>
+                        <field name="publish_date" string="🗓️ Publish Date"/>
+                        <field name="is_available" string="✅ Available?"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- LIST VIEW -->
+    <record id="view_tree_book" model="ir.ui.view">
+        <field name="name">library.book.tree</field>
+        <field name="model">library.book</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="📚 Book List">
+                <field name="name" string="📚 Title" width="250"/>
+                <field name="author_id" string="👤 Author" width="180"/>
+                <field name="publish_date" string="🗓️ Publish Date" width="150"/>
+                <field name="is_available" string="✅ Available" width="100"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- ACTION -->
+    <record id="action_books" model="ir.actions.act_window">
+        <field name="name">📚 Books</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_library_books" name="Books" parent="library_root_menu" action="action_books"/>
+</odoo>
+   
