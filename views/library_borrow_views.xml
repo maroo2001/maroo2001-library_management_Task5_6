@@ -6,6 +6,9 @@
         <field name="model">library.borrowing</field>
         <field name="arch" type="xml">
             <form string="Borrow Record">
+                <header>
+                    <button string="Mark as Returned" type="object" name="action_mark_returned" class="btn-primary"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="book_id"/>
@@ -14,9 +17,6 @@
                         <field name="return_date"/>
                         <field name="returned"/>
                     </group>
-                    <footer>
-                        <button string="Mark as Returned" type="object" name="action_mark_returned" class="btn-primary"/>
-                    </footer>
                 </sheet>
             </form>
         </field>

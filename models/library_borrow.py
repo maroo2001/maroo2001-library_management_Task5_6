@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 from datetime import timedelta
 
 class LibraryBorrowing(models.Model):
@@ -21,10 +22,12 @@ class LibraryBorrowing(models.Model):
 
     # ==== Mark as Returned ====
     def action_mark_returned(self):
-        """Mark the borrowing as returned."""
+        """Mark the borrowing as returned and make book available."""
         for record in self:
             if not record.returned:
                 record.returned = True
+                # جعل الكتاب متاحًا بعد الإرجاع
+                record.book_id._compute_is_available()
 
     # ==== Default Values ====
     @api.model
@@ -34,3 +37,17 @@ class LibraryBorrowing(models.Model):
         if 'borrow_date' in res and not res.get('return_date'):
             res['return_date'] = res['borrow_date'] + timedelta(days=7)
         return res
+
+    # ==== Create Override ====
+    @api.model
+    def create(self, vals_list):
+        for vals in vals_list:
+            book_id = vals.get('book_id')
+            if book_id:
+                existing_borrow = self.search([
+                    ('book_id', '=', book_id),
+                    ('returned', '=', False)
+                ], limit=1)
+                if existing_borrow:
+                    raise ValidationError("This book is currently borrowed and not returned yet.")
+        return super().create(vals_list)
