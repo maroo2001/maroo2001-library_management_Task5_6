@@ -44,7 +44,7 @@
     <!-- Author Menu Item -->
     <record id="library_authors_menu" model="ir.ui.menu">
         <field name="name">Authors</field>
-        <field name="parent_id" ref="library_root_menu"/>
+        <field name="parent_id" ref="menu_library_root"/>
         <field name="action" ref="action_library_authors"/>
     </record>
 </odoo>

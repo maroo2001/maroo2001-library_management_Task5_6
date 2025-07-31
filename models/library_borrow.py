@@ -38,6 +38,7 @@ class LibraryBorrowing(models.Model):
             res['return_date'] = res['borrow_date'] + timedelta(days=7)
         return res
 
+
     # ==== Create Override ====
     @api.model
     def create(self, vals_list):
@@ -50,4 +51,21 @@ class LibraryBorrowing(models.Model):
                 ], limit=1)
                 if existing_borrow:
                     raise ValidationError("This book is currently borrowed and not returned yet.")
+
+            # 🔐 التحقق من البطاقة والعضوية
+            partner_id = vals.get('borrower_id')
+            partner = self.env['res.partner'].browse(partner_id)
+            if not partner.card_id:
+                raise ValidationError("User does not have a valid card.")
+
+            active_membership = self.env['library.membership'].search([
+                ('partner_id', '=', partner_id),
+                ('registration_date', '<=', fields.Date.today()),
+                ('end_date', '>=', fields.Date.today()),
+                ('active', '=', True),
+            ], limit=1)
+
+            if not active_membership:
+                raise ValidationError("User must have an active membership.")
+        
         return super().create(vals_list)

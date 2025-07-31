@@ -20,6 +20,5 @@ class LibraryBook(models.Model):
     @api.depends('borrowing_ids.returned')
     def _compute_is_available(self):
         for book in self:
-            # الكتاب متاح فقط إذا كل الاستعارات تمت إرجاعها
             active_borrowings = book.borrowing_ids.filtered(lambda b: not b.returned)
             book.is_available = len(active_borrowings) == 0

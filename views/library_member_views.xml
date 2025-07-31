@@ -1,0 +1,61 @@
+<odoo>
+    <!-- Form view for library.membership -->
+    <record id="view_library_membership_form" model="ir.ui.view">
+        <field name="name">library.membership.form</field>
+        <field name="model">library.membership</field>
+        <field name="arch" type="xml">
+            <form string="Library Membership">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="card_id"/>
+                        <field name="registration_date"/>
+                        <field name="end_date"/>
+                        <field name="membership_type" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List view for library.membership -->
+    <record id="view_library_membership_list" model="ir.ui.view">
+        <field name="name">library.membership.list</field>
+        <field name="model">library.membership</field>
+        <field name="arch" type="xml">
+            <list string="Library Memberships">
+                <field name="partner_id"/>
+                <field name="card_id"/>
+                <field name="registration_date"/>
+                <field name="end_date"/>
+                <field name="membership_type" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Action for library.membership -->
+    <record id="action_library_memberships" model="ir.actions.act_window">
+        <field name="name">Library Memberships</field>
+        <field name="res_model">library.membership</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu item for memberships -->
+    <menuitem id="menu_library_membership"
+              name="Memberships"
+              parent="menu_library_root"
+              action="action_library_memberships"/>
+
+    <!-- One2many list view inside res.partner form -->
+    <record id="view_partner_form_inherit_library" model="ir.ui.view">
+        <field name="name">res.partner.form.library.cardid</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='function']" position="after">
+                <field name="card_id" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -2,3 +2,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_library_book,access_library_book,model_library_book,,1,1,1,1
 access_library_author,access_library_author,model_library_author,,1,1,1,1
 access_library_borrow,access_library_borrow,model_library_borrowing,,1,1,1,1
+access_library_membership_user,access.library.membership,model_library_membership,,1,1,1,1
+access_res_partner_user,res.partner user,model_res_partner,,1,1,1,1

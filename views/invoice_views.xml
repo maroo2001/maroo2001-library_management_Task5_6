@@ -1,0 +1,39 @@
+<odoo>
+  <!-- Root menu under Invoicing -->
+  <menuitem id="menu_invoicing_library_root"
+            name="Library"
+            parent="account.menu_finance"
+            sequence="99"/>
+
+  <!-- Books (مربوطة بموديل library.book) -->
+  <record id="action_library_books_from_invoice" model="ir.actions.act_window">
+    <field name="name">Books</field>
+    <field name="res_model">library.book</field>
+    <field name="view_mode">list,form</field>
+  </record>
+  <menuitem id="menu_invoicing_library_books"
+            name="Books"
+            parent="menu_invoicing_library_root"
+            action="action_library_books_from_invoice"/>
+
+  <!-- Members: فقط اللي عندهم عضويات -->
+  <record id="action_library_members_from_invoice" model="ir.actions.act_window">
+    <field name="name">Members</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[['membership_ids','!=',[]]]</field>
+  </record>
+  <menuitem id="menu_invoicing_library_members"
+            name="Members"
+            parent="menu_invoicing_library_root"
+            action="action_library_members_from_invoice"/>
+
+  <!-- Invoices: خاصة بعضويات -->
+  <record id="action_library_membership_invoices" model="ir.actions.act_window">
+    <field name="name">Membership Invoices</field>
+    <field name="res_model">account.move</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[["invoice_line_ids.product_id", "!=", False], ["invoice_line_ids.product_id.name", "ilike", "membership"]]</field>
+  </record>
+  
+</odoo>

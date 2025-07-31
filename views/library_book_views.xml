@@ -21,8 +21,8 @@
     </record>
 
     <!-- LIST VIEW -->
-    <record id="view_tree_book" model="ir.ui.view">
-        <field name="name">library.book.tree</field>
+    <record id="view_list_book" model="ir.ui.view">
+        <field name="name">library.book.list</field>
         <field name="model">library.book</field>
         <field name="type">list</field>
         <field name="arch" type="xml">
@@ -42,6 +42,6 @@
         <field name="res_model">library.book</field>
         <field name="view_mode">list,form</field>
     </record>
-    <menuitem id="menu_library_books" name="Books" parent="library_root_menu" action="action_books"/>
+    <menuitem id="menu_library_books" name="Books" parent="menu_library_root" action="action_books"/>
 </odoo>
    
