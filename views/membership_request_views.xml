@@ -11,6 +11,12 @@
           <button string="Mark as Paid" name="action_mark_paid" type="object" class="btn-success">
             <attribute name="modifiers">{'invisible': [('state', '!=', 'confirmed')]}</attribute>
           </button>
+
+          <button name="print_membership_report"
+                  string="Print Membership Report"
+                  type="object"
+                  class="btn-secondary"
+                  attrs="{'invisible': [('id', '=', False)]}"/>
         </header>
         <sheet>
           <group>

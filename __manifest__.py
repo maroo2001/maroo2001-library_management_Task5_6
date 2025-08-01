@@ -1,6 +1,6 @@
 {
     'name': 'Library Management',
-    'version': '1.0',
+    'version': '18.0.1.0.0',
     'summary': 'Manage library books and authors',
     'category': 'Tools',
     'author': 'Maryam',
@@ -19,10 +19,10 @@
         'views/membership_request_views.xml',
         'data/library_sequence.xml', 
         'views/invoice_views.xml',
-    
-
+        'report/report.xml',
+        'report/membership_templates.xml',
+        'i18n/ar.po',
     ],
     'installable': True,
     'application': True,
 }
-

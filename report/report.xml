@@ -1,0 +1,10 @@
+<odoo>
+    <report 
+        id="action_report_membership"
+        model="library.membership"
+        string="Membership Report"
+        name="library_management.report_membership"
+        file="library_management.report_membership"
+        report_type="qweb-pdf"
+    />
+</odoo>

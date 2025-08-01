@@ -73,3 +73,7 @@ class LibraryMembershipRequest(models.Model):
             ])
             if existing:
                 raise ValidationError("This member already has an active or pending membership request.")
+
+
+    def print_membership_report(self):
+         return self.env.ref('library_management.action_report_membership_single').report_action(self)
