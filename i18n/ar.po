@@ -1,84 +1,577 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* library_management
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Library Management\n"
-"Report-Msgid-Bugs-To: Maryam\n"
-"POT-Creation-Date: 2025-08-01 00:00+0300\n"
-"PO-Revision-Date: 2025-08-01 00:00+0300\n"
-"Last-Translator: Maryam <maryam@example.com>\n"
+"Project-Id-Version: Odoo Server 18.5a1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-05 08:53+0000\n"
+"PO-Revision-Date: 2025-08-05 08:53+0000\n"
+"Last-Translator: \n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-msgid "Library Membership"
-msgstr "عضوية المكتبة"
+#. module: library_management
+#: model:ir.actions.server,name:library_management.action_print_multiple_memberships
+msgid "  🖨️ Print All Membership Reports"
+msgstr "🖨️ طباعة جميع تقارير العضويات"
 
-msgid "Library Memberships"
-msgstr "عضويات المكتبة"
+#. module: library_management
+#: model:ir.actions.report,print_report_name:library_management.action_report_multiple_memberships
+msgid "'All_Memberships_Report'"
+msgstr "'تقرير_جميع_العضويات'"
 
-msgid "Card ID"
-msgstr "رقم البطاقة"
+#. module: library_management
+#: model:ir.actions.report,print_report_name:library_management.action_report_single_memberships
+msgid "'Membership Report - %s' % (object.partner_id.name)"
+msgstr "'تقرير العضوية - %s' % (object.partner_id.name)"
 
-msgid "Registration Date"
-msgstr "تاريخ التسجيل"
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership__active
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership_request__state__active
+#: model_terms:ir.ui.view,arch_db:library_management.report_multiple_memberships_template
+#: model_terms:ir.ui.view,arch_db:library_management.report_single_membership_template
+msgid "Active"
+msgstr "نشط"
 
-msgid "End Date"
-msgstr "تاريخ الانتهاء"
+#. module: library_management
+#: model:ir.actions.report,name:library_management.action_report_multiple_memberships
+#: model_terms:ir.ui.view,arch_db:library_management.report_multiple_memberships_template
+msgid "All Memberships Report"
+msgstr "تقرير جميع العضويات"
 
-msgid "Membership Type"
-msgstr "نوع العضوية"
-
-msgid "Member"
-msgstr "العضو"
-
-msgid "Start Date"
-msgstr "تاريخ البدء"
-
-msgid "Payment Terms"
-msgstr "شروط الدفع"
-
-msgid "Status"
-msgstr "الحالة"
-
-msgid "Membership Lines"
-msgstr "تفاصيل العضوية"
-
-msgid "Product"
-msgstr "المنتج"
-
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership_line__amount
 msgid "Amount"
 msgstr "المبلغ"
 
-msgid "Confirm"
-msgstr "تأكيد"
+#. module: library_management
+#: model:ir.model,name:library_management.model_library_author
+#: model:ir.model.fields,field_description:library_management.field_library_book__author_id
+msgid "Author"
+msgstr "المؤلف"
 
-msgid "Mark as Paid"
-msgstr "تحديد كمُدفوعة"
+#. module: library_management
+#: model:ir.actions.act_window,name:library_management.action_library_authors
+#: model:ir.ui.menu,name:library_management.library_authors_menu
+msgid "Authors"
+msgstr "المؤلفون"
 
-msgid "Membership Request"
-msgstr "طلب عضوية"
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_book__is_available
+msgid "Available"
+msgstr "متوفر"
 
-msgid "Membership Requests"
-msgstr "طلبات العضوية"
-
-msgid "Cash"
-msgstr "نقدًا"
-
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership_request__payment_terms__bank
 msgid "Bank Transfer"
 msgstr "تحويل بنكي"
 
-msgid "PayPal"
-msgstr "باي بال"
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__biography
+msgid "Biography"
+msgstr "السيرة الذاتية"
 
-msgid "Draft"
-msgstr "مسودة"
+#. module: library_management
+#: model:ir.model,name:library_management.model_library_book
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__book_id
+msgid "Book"
+msgstr "كتاب"
 
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__book_count
+msgid "Book Count"
+msgstr "عدد الكتب"
+
+#. module: library_management
+#: model:ir.actions.act_window,name:library_management.action_library_books_from_invoice
+#: model:ir.model.fields,field_description:library_management.field_library_author__book_ids
+#: model:ir.ui.menu,name:library_management.menu_invoicing_library_books
+#: model:ir.ui.menu,name:library_management.menu_library_books
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_author_list
+msgid "Books"
+msgstr "الكتب"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__borrow_date
+msgid "Borrow Date"
+msgstr "تاريخ الاستعارة"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_borrow_form
+msgid "Borrow Record"
+msgstr "سجل الاستعارة"
+
+#. module: library_management
+#: model:ir.actions.act_window,name:library_management.action_library_borrow
+#: model:ir.ui.menu,name:library_management.menu_library_borrow
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_borrow_list
+msgid "Borrow Records"
+msgstr "سجلات الاستعارة"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__borrower_id
+msgid "Borrower"
+msgstr "المستعير"
+
+#. module: library_management
+#: model:ir.model,name:library_management.model_library_borrowing
+msgid "Borrowing Record"
+msgstr "سجل الاستعارة"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_book__borrowing_ids
+msgid "Borrowings"
+msgstr "الاستعارات"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership__card_id
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__card_id
+#: model:ir.model.fields,field_description:library_management.field_res_partner__card_id
+#: model:ir.model.fields,field_description:library_management.field_res_users__card_id
+#: model_terms:ir.ui.view,arch_db:library_management.report_single_membership_template
+msgid "Card ID"
+msgstr "رقم البطاقة"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.report_multiple_memberships_template
+msgid "Card Number"
+msgstr "رقم البطاقة"
+
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership_request__payment_terms__cash
+msgid "Cash"
+msgstr "نقدًا"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_membership_request_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership_request__state__confirmed
 msgid "Confirmed"
 msgstr "مؤكد"
 
+#. module: library_management
+#: model:ir.model,name:library_management.model_res_partner
+msgid "Contact"
+msgstr "جهة الاتصال"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__create_uid
+#: model:ir.model.fields,field_description:library_management.field_library_book__create_uid
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__create_uid
+#: model:ir.model.fields,field_description:library_management.field_library_membership__create_uid
+#: model:ir.model.fields,field_description:library_management.field_library_membership_line__create_uid
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__create_date
+#: model:ir.model.fields,field_description:library_management.field_library_book__create_date
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__create_date
+#: model:ir.model.fields,field_description:library_management.field_library_membership__create_date
+#: model:ir.model.fields,field_description:library_management.field_library_membership_line__create_date
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__birth_date
+msgid "Date of Birth"
+msgstr "تاريخ الميلاد"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_book__description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__display_name
+#: model:ir.model.fields,field_description:library_management.field_library_book__display_name
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__display_name
+#: model:ir.model.fields,field_description:library_management.field_library_membership__display_name
+#: model:ir.model.fields,field_description:library_management.field_library_membership_line__display_name
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__display_name
+#: model:ir.model.fields,field_description:library_management.field_res_partner__display_name
+#: model:ir.model.fields,field_description:library_management.field_res_users__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership_request__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__email
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership__end_date
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__end_date
+msgid "End Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.report_multiple_memberships_template
+#: model_terms:ir.ui.view,arch_db:library_management.report_single_membership_template
+msgid "Expired"
+msgstr "منتهي الصلاحية"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.report_multiple_memberships_template
+#: model_terms:ir.ui.view,arch_db:library_management.report_single_membership_template
+msgid "Expiry Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__id
+#: model:ir.model.fields,field_description:library_management.field_library_book__id
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__id
+#: model:ir.model.fields,field_description:library_management.field_library_membership__id
+#: model:ir.model.fields,field_description:library_management.field_library_membership_line__id
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__id
+#: model:ir.model.fields,field_description:library_management.field_res_partner__id
+#: model:ir.model.fields,field_description:library_management.field_res_users__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__invoice_id
+msgid "Invoice"
+msgstr "الفاتورة"
+
+#. module: library_management
+#: model:ir.ui.menu,name:library_management.menu_invoicing_library_invoices
+msgid "Invoices"
+msgstr "الفواتير"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__write_uid
+#: model:ir.model.fields,field_description:library_management.field_library_book__write_uid
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__write_uid
+#: model:ir.model.fields,field_description:library_management.field_library_membership__write_uid
+#: model:ir.model.fields,field_description:library_management.field_library_membership_line__write_uid
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__write_date
+#: model:ir.model.fields,field_description:library_management.field_library_book__write_date
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__write_date
+#: model:ir.model.fields,field_description:library_management.field_library_membership__write_date
+#: model:ir.model.fields,field_description:library_management.field_library_membership_line__write_date
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: library_management
+#: model:ir.ui.menu,name:library_management.library_root_menu
+#: model:ir.ui.menu,name:library_management.menu_invoicing_library_root
+#: model:ir.ui.menu,name:library_management.menu_library_root
+msgid "Library"
+msgstr "المكتبة"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_author_form
+msgid "Library Author"
+msgstr "مؤلف المكتبة"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_author_list
+msgid "Library Authors"
+msgstr "مؤلفو المكتبة"
+
+#. module: library_management
+#: model:ir.actions.act_window,name:library_management.action_library_members_only
+msgid "Library Members"
+msgstr "أعضاء المكتبة"
+
+#. module: library_management
+#: model:ir.model,name:library_management.model_library_membership
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_membership_form
+msgid "Library Membership"
+msgstr "عضوية المكتبة"
+
+#. module: library_management
+#: model:ir.model,name:library_management.model_library_membership_request
+msgid "Library Membership Request"
+msgstr "طلب عضوية المكتبة"
+
+#. module: library_management
+#: model:ir.actions.act_window,name:library_management.action_library_membership_users
+#: model:ir.actions.act_window,name:library_management.action_library_memberships
+#: model:ir.model.fields,field_description:library_management.field_res_partner__membership_ids
+#: model:ir.model.fields,field_description:library_management.field_res_users__membership_ids
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_membership_list
+#: model_terms:ir.ui.view,arch_db:library_management.view_partner_form_library_inherit
+msgid "Library Memberships"
+msgstr "عضويات المكتبة"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_membership_request_form
+msgid "Mark as Paid"
+msgstr "وضع علامة كمدفوع"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_borrow_form
+msgid "Mark as Returned"
+msgstr "وضع علامة كمُعاد"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership__partner_id
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__partner_id
+#: model_terms:ir.ui.view,arch_db:library_management.report_multiple_memberships_template
+msgid "Member"
+msgstr "عضو"
+
+#. module: library_management
+#: model:ir.actions.act_window,name:library_management.action_library_members_from_invoice
+#: model:ir.ui.menu,name:library_management.menu_invoicing_library_members
+#: model:ir.ui.menu,name:library_management.menu_library_members
+msgid "Members"
+msgstr "الأعضاء"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_res_partner__membership_count
+#: model:ir.model.fields,field_description:library_management.field_res_users__membership_count
+#: model:ir.model.fields,field_description:library_management.field_res_users__user_membership_count
+msgid "Membership Count"
+msgstr "عدد العضويات"
+
+#. module: library_management
+#: model:ir.actions.act_window,name:library_management.action_library_membership_invoices
+msgid "Membership Invoices"
+msgstr "فواتير العضوية"
+
+#. module: library_management
+#: model:ir.model,name:library_management.model_library_membership_line
+msgid "Membership Line"
+msgstr "بند العضوية"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__line_ids
+msgid "Membership Lines"
+msgstr "بنود العضوية"
+
+#. module: library_management
+#: model:ir.actions.report,name:library_management.action_report_single_memberships
+#: model_terms:ir.ui.view,arch_db:library_management.report_single_membership_template
+msgid "Membership Report"
+msgstr "تقرير العضوية"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_membership_request_form
+msgid "Membership Request"
+msgstr "طلب العضوية"
+
+#. module: library_management
+#: model:ir.actions.act_window,name:library_management.action_library_membership_request
+#: model:ir.ui.menu,name:library_management.menu_library_membership_requests
+msgid "Membership Requests"
+msgstr "طلبات العضوية"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.report_single_membership_template
+msgid "Membership Status"
+msgstr "حالة العضوية"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership__membership_type
+msgid "Membership Type"
+msgstr "نوع العضوية"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_partner_form_library_inherit
+msgid "Memberships"
+msgstr "العضويات"
+
+#. module: library_management
+#: model:ir.ui.menu,name:library_management.menu_library_membership
+msgid "Memberships requist"
+msgstr "طلبات العضوية"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.report_single_membership_template
+msgid "Member’s Name"
+msgstr "اسم العضو"
+
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership__membership_type__monthly
+msgid "Monthly"
+msgstr "شهري"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_author__nationality
+msgid "Nationality"
+msgstr "الجنسية"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership__note
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership_request__state__paid
 msgid "Paid"
 msgstr "مدفوع"
 
-msgid "Active"
-msgstr "نشط"
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership_request__payment_terms__paypal
+msgid "PayPal"
+msgstr "باي بال"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__payment_terms
+msgid "Payment Terms"
+msgstr "شروط الدفع"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_membership_request_form
+msgid "Print Membership Report"
+msgstr "طباعة تقرير العضوية"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership_line__product_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_book__publish_date
+msgid "Publish Date"
+msgstr "تاريخ النشر"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.report_multiple_memberships_template
+#: model_terms:ir.ui.view,arch_db:library_management.report_single_membership_template
+msgid "Registration Date"
+msgstr "تاريخ التسجيل"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership_line__request_id
+msgid "Request"
+msgstr "الطلب"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership__user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤول"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__return_date
+msgid "Return Date"
+msgstr "تاريخ الإرجاع"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_borrowing__returned
+msgid "Returned"
+msgstr "مُعاد"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership__registration_date
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__registration_date
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_membership_request__state
+#: model_terms:ir.ui.view,arch_db:library_management.report_multiple_memberships_template
+msgid "Status"
+msgstr "الحالة"
+
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership__membership_type__student
+msgid "Student"
+msgstr "طالب"
+
+#. module: library_management
+#: model:ir.model.fields,field_description:library_management.field_library_book__name
+msgid "Title"
+msgstr "العنوان"
+
+#. module: library_management
+#: model:ir.model,name:library_management.model_res_users
+msgid "User"
+msgstr "المستخدم"
+
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership__membership_type__vip
+msgid "VIP"
+msgstr "مميز"
+
+#. module: library_management
+#: model:ir.model.fields.selection,name:library_management.selection__library_membership__membership_type__yearly
+msgid "Yearly"
+msgstr "سنوي"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_list_book
+msgid "✅ Available"
+msgstr "✅ متوفر"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_form_book
+msgid "✅ Available?"
+msgstr "✅ متوفر؟"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_form_book
+#: model_terms:ir.ui.view,arch_db:library_management.view_list_book
+msgid "👤 Author"
+msgstr "👤 المؤلف"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_form_book
+msgid "📖 Book Form"
+msgstr "📖 نموذج الكتاب"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_list_book
+msgid "📚 Book List"
+msgstr "📚 قائمة الكتب"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_form_book
+msgid "📚 Book Title"
+msgstr "📚 عنوان الكتاب"
+
+#. module: library_management
+#: model:ir.actions.act_window,name:library_management.action_books
+msgid "📚 Books"
+msgstr "📚 الكتب"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_list_book
+msgid "📚 Title"
+msgstr "📚 العنوان"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_form_book
+msgid "📝 Description"
+msgstr "📝 الوصف"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_library_membership_request_form
+msgid "📦 Membership Lines"
+msgstr "📦 بنود العضوية"
+
+#. module: library_management
+#: model_terms:ir.ui.view,arch_db:library_management.view_form_book
+#: model_terms:ir.ui.view,arch_db:library_management.view_list_book
+msgid "🗓️ Publish Date"
+msgstr "🗓️ تاريخ النشر"

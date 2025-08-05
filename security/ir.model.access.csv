@@ -4,3 +4,5 @@ access_library_author,access_library_author,model_library_author,,1,1,1,1
 access_library_borrow,access_library_borrow,model_library_borrowing,,1,1,1,1
 access_library_membership_user,access.library.membership,model_library_membership,,1,1,1,1
 access_res_partner_user,res.partner user,model_res_partner,,1,1,1,1
+access_library_membership_line,access_library_membership_line,model_library_membership_line,,1,1,1,1
+access_library_membership_request_user,access.library.membership.request,model_library_membership_request,,1,1,1,1

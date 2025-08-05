@@ -1,0 +1,60 @@
+<odoo>
+  <template id="report_multiple_memberships_template">
+    <t t-call="web.basic_layout">
+      <div class="page" style="font-family: 'Tahoma', sans-serif; padding: 30px; background-color: #f4f6f7;">
+
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="color: #2c3e50; font-size: 24px; border-bottom: 2px solid #27ae60; display: inline-block; padding-bottom: 10px;">
+            All Membership Requests
+          </h2>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; background-color: #fff;">
+          <thead>
+            <tr style="background-color: #27ae60; color: white;">
+              <th style="padding: 10px; border: 1px solid #ccc;">Member</th>
+              <th style="padding: 10px; border: 1px solid #ccc;">Registration Date</th>
+              <th style="padding: 10px; border: 1px solid #ccc;">Expiry Date</th>
+              <th style="padding: 10px; border: 1px solid #ccc;">Card Number</th>
+              <th style="padding: 10px; border: 1px solid #ccc;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <t t-foreach="docs" t-as="doc">
+              <tr>
+                <td style="padding: 8px; border: 1px solid #eee;"><t t-esc="doc.partner_id.name"/></td>
+                <td style="padding: 8px; border: 1px solid #eee;"><t t-esc="doc.registration_date"/></td>
+                <td style="padding: 8px; border: 1px solid #eee;"><t t-esc="doc.end_date"/></td>
+                <td style="padding: 8px; border: 1px solid #eee;"><t t-esc="doc.card_id"/></td>
+                <td style="padding: 8px; border: 1px solid #eee;">
+                  <t t-if="doc.state == 'active'">Active</t>
+                  <t t-elif="doc.state == 'expired'">Expired</t>
+                  <t t-else=""><t t-esc="doc.state"/></t>
+                </td>
+              </tr>
+            </t>
+          </tbody>
+        </table>
+
+      </div>
+    </t>
+  </template>
+
+  <record id="action_report_multiple_memberships" model="ir.actions.report">
+    <field name="name">All Memberships Report</field>
+    <field name="model">library.membership.request</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">library_management.report_multiple_memberships_template</field>
+    <field name="report_file">library_management.report_multiple_memberships_template</field>
+    <field name="print_report_name">'All_Membership_Requests_Report'</field>
+  </record>
+
+  <record id="action_print_multiple_memberships" model="ir.actions.server">
+    <field name="name">🖨️ Print All Membership Requests</field>
+    <field name="model_id" ref="library_management.model_library_membership_request"/>
+    <field name="state">code</field>
+    <field name="code">
+      action = env.ref('library_management.action_report_multiple_memberships').report_action(env['library.membership.request'].search([]))
+    </field>
+  </record>
+</odoo>

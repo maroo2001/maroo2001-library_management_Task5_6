@@ -4,31 +4,35 @@
 
   <!-- Books -->
   <menuitem id="menu_library_books"
-          name="Books"
-          parent="menu_library_root"
-          action="action_books"/>
+            name="Books"
+            parent="menu_library_root"
+            action="action_books"/>
 
- <!-- Members: فقط اللي عندهم card_id -->
+  <!-- Members: فقط اللي عندهم card_id -->
   <record id="action_library_members_only" model="ir.actions.act_window">
       <field name="name">Library Members</field>
       <field name="res_model">res.partner</field>
       <field name="view_mode">list,form</field>
       <field name="domain">[["card_id", "!=", False]]</field>
   </record>
-  
+
+
+  <menuitem id="menu_library_members"
+            name="Members"
+            parent="menu_library_books"
+            action="action_library_members_only"/>
+
   <!-- Memberships -->
   <menuitem id="menu_library_membership"
-            name="Memberships"
-            parent="menu_library_root"
+            name="Memberships requist"
+            parent="menu_library_books"
             action="action_library_memberships"/>
 
   <!-- Membership Requests -->
   <menuitem id="menu_library_membership_requests"
             name="Membership Requests"
-            parent="menu_library_root"
+            parent="menu_library_books"
             action="action_library_membership_request"/>
-
-            
 
   <!-- Borrow Records -->
   <menuitem id="menu_library_borrow"
@@ -36,9 +40,9 @@
             parent="menu_library_root"
             action="action_library_borrow"/>
 
-
-   <menuitem id="menu_invoicing_library_invoices"
+  <!-- Invoices -->
+  <menuitem id="menu_invoicing_library_invoices"
             name="Invoices"
-            parent="menu_library_root"
+            parent="menu_library_books"
             action="action_library_membership_invoices"/>
 </odoo>

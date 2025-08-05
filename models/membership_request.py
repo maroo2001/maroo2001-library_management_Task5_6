@@ -23,6 +23,7 @@ class LibraryMembershipRequest(models.Model):
 
     line_ids = fields.One2many('library.membership.line', 'request_id', string="Membership Lines")
     invoice_id = fields.Many2one('account.move', string="Invoice", readonly=True)
+    membership_id = fields.Many2one('library.membership', string="Membership")
 
     def action_confirm(self):
         for record in self:
@@ -75,5 +76,9 @@ class LibraryMembershipRequest(models.Model):
                 raise ValidationError("This member already has an active or pending membership request.")
 
 
-    def print_membership_report(self):
-         return self.env.ref('library_management.action_report_membership_single').report_action(self)
+    def print_single_membership_report(self):
+        self.ensure_one()
+        return self.env.ref('library_management.action_report_single_memberships').report_action(self)
+
+    def print_multiple_membership_report(self):
+        return self.env.ref('library_management.action_report_multiple_memberships').report_action(self)

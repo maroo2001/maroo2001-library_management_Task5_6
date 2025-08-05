@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-from datetime import timedelta
+from datetime import timedelta, date
 
 class LibraryBorrowing(models.Model):
     _name = 'library.borrowing'
@@ -38,11 +38,17 @@ class LibraryBorrowing(models.Model):
             res['return_date'] = res['borrow_date'] + timedelta(days=7)
         return res
 
-
     # ==== Create Override ====
     @api.model
     def create(self, vals_list):
+        """Validate borrowing before creation."""
+        # إذا كان قاموس واحد، نحوله لقائمة
+        if isinstance(vals_list, dict):
+            vals_list = [vals_list]
+
+        records = []
         for vals in vals_list:
+            # --- 1. تحقق إذا الكتاب غير مستعار بالفعل ---
             book_id = vals.get('book_id')
             if book_id:
                 existing_borrow = self.search([
@@ -52,20 +58,25 @@ class LibraryBorrowing(models.Model):
                 if existing_borrow:
                     raise ValidationError("This book is currently borrowed and not returned yet.")
 
-            # 🔐 التحقق من البطاقة والعضوية
-            partner_id = vals.get('borrower_id')
-            partner = self.env['res.partner'].browse(partner_id)
-            if not partner.card_id:
-                raise ValidationError("User does not have a valid card.")
-
-            active_membership = self.env['library.membership'].search([
-                ('partner_id', '=', partner_id),
-                ('registration_date', '<=', fields.Date.today()),
-                ('end_date', '>=', fields.Date.today()),
-                ('active', '=', True),
+            # --- 2. تحقق من العضوية ---
+            partner = self.env['res.partner'].browse(vals['borrower_id'])
+            membership = self.env['library.membership.request'].search([
+                ('partner_id', '=', partner.id),
+                ('state', '=', 'active'),
+                ('registration_date', '<=', date.today()),
+                ('end_date', '>=', date.today()),
             ], limit=1)
+            if not membership:
+                raise ValidationError("Borrower does not have an active membership valid for today.")
 
-            if not active_membership:
-                raise ValidationError("User must have an active membership.")
-        
-        return super().create(vals_list)
+            # --- 3. إنشاء السجل ---
+            record = super(LibraryBorrowing, self).create(vals)
+            records.append(record)
+
+            # --- 4. تعديل حالة الكتاب إلى غير متاح ---
+            if book_id:
+                book = self.env['library.book'].browse(book_id)
+                book.write({'is_available': False})
+
+        # إذا أنشأنا أكثر من سجل نرجع recordset، وإذا سجل واحد نرجع نفس السجل
+        return records if len(records) > 1 else records[0]

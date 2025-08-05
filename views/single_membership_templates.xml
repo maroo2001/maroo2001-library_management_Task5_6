@@ -1,0 +1,57 @@
+<odoo>
+  <template id="report_single_membership_template">
+    <t t-call="web.basic_layout">
+      <t t-foreach="docs" t-as="doc">
+        <div class="page" style="font-family: 'Tahoma', sans-serif; padding: 30px; background-color: #f9f9f9;">
+
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="color: #34495e; font-size: 24px; border-bottom: 2px solid #8e44ad; display: inline-block; padding-bottom: 10px;">
+              Membership Request Report
+            </h2>
+          </div>
+
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px; background-color: #fff; border: 1px solid #ddd;">
+            <tr style="background-color: #8e44ad; color: #fff;">
+              <th style="padding: 10px; text-align: left; width: 30%;">Field</th>
+              <th style="padding: 10px; text-align: left;">Value</th>
+            </tr>
+            <tr>
+              <td style="padding: 10px;">Member’s Name</td>
+              <td style="padding: 10px;"><t t-esc="doc.partner_id.name"/></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px;">Registration Date</td>
+              <td style="padding: 10px;"><t t-esc="doc.registration_date"/></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px;">Expiry Date</td>
+              <td style="padding: 10px;"><t t-esc="doc.end_date"/></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px;">Card Number</td>
+              <td style="padding: 10px;"><t t-esc="doc.card_id"/></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px;">Membership Status</td>
+              <td style="padding: 10px;">
+                <t t-if="doc.state == 'active'">Active</t>
+                <t t-elif="doc.state == 'expired'">Expired</t>
+                <t t-else=""><t t-esc="doc.state"/></t>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+      </t>
+    </t>
+  </template>
+
+  <record id="action_report_single_memberships" model="ir.actions.report">
+    <field name="name">Membership Report</field>
+    <field name="model">library.membership.request</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">library_management.report_single_membership_template</field>
+    <field name="report_file">library_management.report_single_membership_template</field>
+    <field name="print_report_name">'Membership Report - %s' % (object.partner_id.name)</field>
+  </record>
+</odoo>
